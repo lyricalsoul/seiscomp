@@ -4,11 +4,16 @@
   "description": "A modern library for interacting with SeisComP. Runs everywhere.",
   "type": "module",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/*.ts src/**/*.ts --format esm --dts",
     "clear": "rm -rf dist",
     "test:fdsnws": "bun examples/fdsnws.js",
-    "build:docs": "typedoc --plugin typedoc-plugin-extras --customTitle seiscomp.js --footerLastModified --footerTypedocVersion --out docs src/index.ts src/modules/**/*.ts src/types/*.ts"
+    "build:docs": "typedoc --plugin typedoc-plugin-extras --customTitle seiscomp.js --footerLastModified --footerTypedocVersion --out docs src/index.ts src/modules/**/*.ts src/types/*.ts",
+    "predeploy": "bun run build:docs",
+    "deploy": "gh-pages -d docs",
+    "prepublish": "bun run clear && bun run build",
+    "postpublish": "bun run deploy"
   },
   "keywords": [
     "seiscomp3",
@@ -19,6 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.11.18",
+    "gh-pages": "^4.0.0",
     "tsup": "^6.5.0",
     "typedoc": "^0.23.24",
     "typedoc-plugin-extras": "^2.3.2",
