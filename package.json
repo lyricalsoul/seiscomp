@@ -13,7 +13,7 @@
     "predeploy": "bun run build:docs",
     "deploy": "gh-pages -d docs",
     "prepublish": "bun run clear && bun run build",
-    "postpublish": "bun run deploy"
+    "postpublish": "bun run deploy && npm version patch"
   },
   "keywords": [
     "seiscomp3",
