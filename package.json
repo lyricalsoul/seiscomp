@@ -1,6 +1,6 @@
 {
   "name": "seiscomp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern library for interacting with SeisComP. Runs everywhere.",
   "type": "module",
   "main": "dist/index.js",
