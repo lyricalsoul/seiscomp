@@ -9,7 +9,7 @@
     "build": "tsup src/*.ts src/**/*.ts --format esm --dts",
     "clear": "rm -rf dist",
     "test:fdsnws": "bun examples/fdsnws.js",
-    "build:docs": "typedoc --plugin typedoc-plugin-extras --customTitle seiscomp.js --footerLastModified --footerTypedocVersion --out docs src/index.ts src/builders/*.ts src/builders/**/*.ts src/modules/**/*.ts src/types/*.ts",
+    "build:docs": "typedoc --plugin typedoc-plugin-extras --plugin typedoc-plugin-remove-references --plugin @mxssfd/typedoc-theme --theme my-theme --customTitle seiscomp.js --footerLastModified --footerTypedocVersion --out docs src/index.ts src/builders/*.ts src/modules/*.ts src/types/*.ts",
     "predeploy": "bun run build:docs",
     "deploy": "gh-pages -d docs",
     "prepublish": "bun run clear && bun run build",
@@ -23,11 +23,13 @@
   "author": "blue <lyricalsoul@proton.me>",
   "license": "MIT",
   "devDependencies": {
+    "@mxssfd/typedoc-theme": "^1.0.3",
     "@types/node": "^18.11.18",
     "gh-pages": "^4.0.0",
     "tsup": "^6.5.0",
     "typedoc": "^0.23.24",
     "typedoc-plugin-extras": "^2.3.2",
+    "typedoc-plugin-remove-references": "^0.0.6",
     "typescript": "^4.9.4"
   },
   "dependencies": {

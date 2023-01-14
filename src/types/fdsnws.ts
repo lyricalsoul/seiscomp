@@ -17,7 +17,7 @@ export interface SC3ResponseEntity {
 
 /** Describes the location of a station. */
 export interface StationLocation {
-  /** The location name. Most of the times "City - State". */
+  /** The location name. Usually `City - State`. */
   name: string
   /** The location country. */
   country: string
@@ -59,7 +59,7 @@ export interface Network {
   description?: string
   /** The instituion(s) that operate the network. */
   institutions?: string
-  /** The region of the network. Undefined if the network is global, most of the times (the Global Seismograph Network, ran by the IRIS/USGS, for example, does not send this property). */
+  /** The region of the network. Undefined if the network is global, usually. The Global Seismograph Network, ran by the IRIS/USGS, for example, does not send this property. */
   region?: string
   /** The network type. */
   type?: string

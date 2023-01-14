@@ -28,6 +28,7 @@ class StationService extends FDSNWSService {
     this.fdsnws = fdsnws
   }
 
+  // noinspection JSValidateJSDoc
   /**
    * Returns a query builder for the `station` service.
    * Refer to the query builder documentation for usage.
