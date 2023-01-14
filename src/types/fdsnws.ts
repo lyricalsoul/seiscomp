@@ -11,7 +11,20 @@ export interface StationQuery {
   level?: string
 }
 
-export interface Station {
+/** Describes any entity (such as a station) returned by SC3. */
+export interface SC3ResponseEntity {
+}
+
+/** Describes the location of a station. */
+export interface StationLocation {
+  /** The location name. Usually `City - State`. */
+  name: string
+  /** The location country. */
+  country: string
+}
+
+/** Describes a station. */
+export interface Station extends SC3ResponseEntity {
   /** The station description - mostly used as a title. */
   description?: string
   /** The station latitude. */
@@ -38,6 +51,7 @@ export interface Station {
   affiliation: string
 }
 
+/** Describes a network. */
 export interface Network {
   /** The start date of the network. */
   startDate: Date
@@ -45,7 +59,7 @@ export interface Network {
   description?: string
   /** The instituion(s) that operate the network. */
   institutions?: string
-  /** The region of the network. Undefined if the network is global, most of the times (the Global Seismograph Network, ran by the IRIS/USGS, for example, does not send this property). */
+  /** The region of the network. Undefined if the network is global, usually. The Global Seismograph Network, ran by the IRIS/USGS, for example, does not send this property. */
   region?: string
   /** The network type. */
   type?: string
@@ -63,9 +77,6 @@ export interface Network {
   stations: Station[]
 }
 
-export interface StationLocation {
-  /** The location name. Most of the times "City - State". */
-  name: string
-  /** The location country. */
-  country: string
+export interface EventQuery {
+
 }
