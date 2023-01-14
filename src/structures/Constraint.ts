@@ -2,6 +2,7 @@ import { QueryBuilder } from '../builders/queryBuilder.js'
 
 /** @hidden */
 export class Constraint<T> {
+  /** @hidden */
   builder: QueryBuilder<T>
   /** @hidden */
   private parameters: Record<string, string> = {}
@@ -22,6 +23,10 @@ export class Constraint<T> {
     }
   }
 
+  /**
+   * @hidden
+   * @private
+   */
   build (): string {
     return Object.entries(this.parameters)
       .map((values) => values.map(encodeURIComponent).join('='))

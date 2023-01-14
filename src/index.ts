@@ -1,3 +1,1 @@
-import FDSNWS from './modules/fdsnws/index.js'
-
-export { FDSNWS }
+export { FDSNWS } from './modules/fdsnws.js'

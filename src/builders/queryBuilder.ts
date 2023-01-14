@@ -1,9 +1,13 @@
-import { TimeConstraints } from './constraints/time.js'
-import { BoxConstraints, CircleConstraints } from './constraints/geographical.js'
-import { ChannelConstraints } from './constraints/channel.js'
-import { StationConstraints } from './constraints/station.js'
 import { SC3ResponseEntity, Station } from '../types/fdsnws.js'
+import {
+  BoxConstraints,
+  ChannelConstraints,
+  CircleConstraints,
+  StationConstraints,
+  TimeConstraints
+} from './constraints.js'
 
+/** @hidden */
 type FinishingFunction = (string) => Promise<SC3ResponseEntity>
 
 /**
@@ -15,7 +19,7 @@ type FinishingFunction = (string) => Promise<SC3ResponseEntity>
  *
  * Service-specific constraints should be acessed using the service name. For example, the following code queries events with a magnitude up to 5 and a maximum depth of 100km.
  * ```javascript
- * await client.event.buildQuery()
+ * await client.event.query()
  *   .event.maxMagnitude(5)
  *   .event.maxDepth(100)
  *   .finish()
@@ -47,7 +51,7 @@ type FinishingFunction = (string) => Promise<SC3ResponseEntity>
  *   .finish()
  *   ```
  */
-export class QueryBuilder<T> {
+class QueryBuilder<T> {
   /** Time constraints. */
   public time: TimeConstraints<T> | undefined
   /** Circle constraints (geographical constraint). */
@@ -64,6 +68,7 @@ export class QueryBuilder<T> {
 
   /**
    * Creates a new QueryBuilder.
+   * @hidden
    */
   constructor (enabledConstraints: string[], finishing: FinishingFunction) {
     if (enabledConstraints.includes('time')) this.time = new TimeConstraints(this)
@@ -98,3 +103,5 @@ export class QueryBuilder<T> {
     return constraints.filter(a => !!a).join('&')
   }
 }
+
+export { QueryBuilder, FinishingFunction }

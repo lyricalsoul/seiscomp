@@ -11,9 +11,11 @@ export interface StationQuery {
   level?: string
 }
 
+/** Describes any entity (such as a station) returned by SC3. */
 export interface SC3ResponseEntity {
 }
 
+/** Describes the location of a station. */
 export interface StationLocation {
   /** The location name. Most of the times "City - State". */
   name: string
@@ -21,6 +23,7 @@ export interface StationLocation {
   country: string
 }
 
+/** Describes a station. */
 export interface Station extends SC3ResponseEntity {
   /** The station description - mostly used as a title. */
   description?: string
@@ -48,6 +51,7 @@ export interface Station extends SC3ResponseEntity {
   affiliation: string
 }
 
+/** Describes a network. */
 export interface Network {
   /** The start date of the network. */
   startDate: Date
