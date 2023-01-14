@@ -18,7 +18,7 @@ class FDSNWS extends SeisModule {
   }
 
   /** @hidden */
-  _request<T> (path: string, query: Record<string, any>, xml: boolean = false): Promise<T | undefined> {
+  _request<T> (path: string, query: Record<string, any> | string, xml: boolean = false): Promise<T | undefined> {
     return get(this.url + path, { query, xml }).catch((err) => {
       if (err.status === 404) return undefined
       throw err

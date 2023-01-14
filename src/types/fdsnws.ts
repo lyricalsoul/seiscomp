@@ -11,7 +11,17 @@ export interface StationQuery {
   level?: string
 }
 
-export interface Station {
+export interface SC3ResponseEntity {
+}
+
+export interface StationLocation {
+  /** The location name. Most of the times "City - State". */
+  name: string
+  /** The location country. */
+  country: string
+}
+
+export interface Station extends SC3ResponseEntity {
   /** The station description - mostly used as a title. */
   description?: string
   /** The station latitude. */
@@ -63,9 +73,6 @@ export interface Network {
   stations: Station[]
 }
 
-export interface StationLocation {
-  /** The location name. Most of the times "City - State". */
-  name: string
-  /** The location country. */
-  country: string
+export interface EventQuery {
+
 }
